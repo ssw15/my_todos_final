@@ -5,6 +5,12 @@ class TodosController < ApplicationController
   # GET /todos.json
   def index
     @todos = Todo.all
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
+
   end
 
   # GET /todos/1
@@ -58,6 +64,7 @@ class TodosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to todos_url, notice: 'Todo was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 

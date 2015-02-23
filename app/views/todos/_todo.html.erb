@@ -1,8 +1,8 @@
-<li class="list-group-item">
+<li id="todo_<%= todo.id %>" class="list-group-item">
   <div class="btn-group">
     <%= link_to icon('search-plus'), todo, class: "btn btn-primary btn-sm" %>
     <%= link_to icon('edit'), edit_todo_path(todo), class: "btn btn-warning btn-sm" %>
-    <%= link_to icon('trash-o'), todo, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+    <%= link_to icon('trash-o'), todo, method: :delete, class: "btn btn-danger btn-sm", remote: true, data: { confirm: "Yo, are you sure?" } %>
   </div>
 
   <% if todo.complete? %>
