@@ -7,5 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 100.times do
-  Todo.create content: Faker::Hacker.say_something_smart, complete: rand(2)
+  Todo.create content: Faker::Hacker.say_something_smart,
+              complete: rand(2)
 end
