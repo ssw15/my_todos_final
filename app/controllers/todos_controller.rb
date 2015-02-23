@@ -25,6 +25,10 @@ class TodosController < ApplicationController
 
   # GET /todos/1/edit
   def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # POST /todos
@@ -36,6 +40,7 @@ class TodosController < ApplicationController
       if @todo.save
         format.html { redirect_to :back, notice: 'Todo was successfully created.' }
         format.json { render :show, status: :created, location: @todo }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
@@ -50,6 +55,7 @@ class TodosController < ApplicationController
       if @todo.update(todo_params)
         format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
         format.json { render :show, status: :ok, location: @todo }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @todo.errors, status: :unprocessable_entity }

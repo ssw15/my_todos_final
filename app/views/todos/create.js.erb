@@ -1,0 +1,9 @@
+var elem = $('<%= j(render @todo) %>');
+
+elem.hide();
+
+$('#form-list-item').after(elem);
+
+elem.slideDown();
+
+$('#todo_content').val("");
