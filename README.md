@@ -7,7 +7,7 @@
   - content:string.
   - complete:boolean.
  - Install the [faker](https://github.com/stympy/faker) gem.
- - Write a seeds file to create 100 todos.
+ - Write a seeds file to create 100 todos (use `Faker::Hacker.say_something_smart`).
  - Set the default ordering of todos to "created_at DESC".
  - Improve the Todos#index view:
   - Use a Bootstrap panel with list-group to contain all todos.
