@@ -1,29 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>Todos</h1>
+</div>
 
-<h1>Listing Todos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Complete</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="panel panel-primary">
+  <ul class="list-group">
     <% @todos.each do |todo| %>
-      <tr>
-        <td><%= todo.content %></td>
-        <td><%= todo.complete %></td>
-        <td><%= link_to 'Show', todo %></td>
-        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-        <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <li class="list-group-item">
+      <div class="btn-group">
+        <%= link_to icon('search-plus'), todo, class: "btn btn-primary btn-sm" %>
+        <%= link_to icon('edit'), edit_todo_path(todo), class: "btn btn-warning btn-sm" %>
+        <%= link_to icon('trash-o'), todo, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+      </div>
+
+      <% if todo.complete? %>
+        <strike><%= todo.content %></strike>
+      <% else %>
+        <%= todo.content %>
+      <% end %>
+    </li>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Todo', new_todo_path %>
+  </ul>
+</div>
