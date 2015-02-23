@@ -4,20 +4,21 @@
 
 <div class="panel panel-primary">
   <ul class="list-group">
-    <% @todos.each do |todo| %>
     <li class="list-group-item">
-      <div class="btn-group">
-        <%= link_to icon('search-plus'), todo, class: "btn btn-primary btn-sm" %>
-        <%= link_to icon('edit'), edit_todo_path(todo), class: "btn btn-warning btn-sm" %>
-        <%= link_to icon('trash-o'), todo, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
-      </div>
-
-      <% if todo.complete? %>
-        <strike><%= todo.content %></strike>
-      <% else %>
-        <%= todo.content %>
+      <%= form_for Todo.new, html: { class: "form-inline" } do |f| %>
+        <div class="form-group">
+          <%= f.label :content, class: "sr-only" %>
+          <%= f.text_field :content, class: "form-control", placeholder: "Add a todo" %>
+        </div>
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :complete, class: "form-control" %>
+            Complete?
+          </label>
+        </div>
+        <%= f.button icon('plus'), class: "btn btn-success" %>
       <% end %>
     </li>
-    <% end %>
+    <%= render @todos %>
   </ul>
 </div>
